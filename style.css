@@ -45,7 +45,7 @@ body{
 }
 
 .top-bar, .progress-area .song-timer, 
-.controls{
+.controls, .music-list .header, .music-list ul li{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -218,4 +218,24 @@ body{
   border-radius: 15px;
   box-shadow: 0px -5px 10px rgba(0,0,0,0.1);
   transition: all 0.15s ease-out;
+}
+
+.header .row{
+  display: flex;
+  align-items: center;
+  font-size: 19px;
+  color: var(--lightblack);
+}
+
+.header .row i{
+  cursor: default;
+}
+
+.header .row span{
+  margin-left: 5px;
+}
+
+.header #close{
+  font-size: 22px;
+  color: var(--lightblack);
 }
