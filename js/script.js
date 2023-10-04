@@ -5,7 +5,9 @@ musicArtist = wrapper.querySelector(".song-details .artist"),
 mainAudio = wrapper.querySelector("#main-audio"),
 playPauseBtn = wrapper.querySelector(".play-pause"),
 prevBtn = wrapper.querySelector("#prev"),
-nextBtn = wrapper.querySelector("#next")
+nextBtn = wrapper.querySelector("#next"),
+progressArea = wrapper.querySelector(".progress-area"),
+progressBar = progressArea.querySelector(".progress-bar")
 
 let musicIndex = Math.floor((Math.random() * allMusic.length) + 1);
 isMusicPaused = true;
@@ -68,4 +70,32 @@ prevBtn.addEventListener("click", ()=>{
 //next music button event
 nextBtn.addEventListener("click", ()=>{
   nextMusic();
+});
+
+// update progress bar width according to music current time
+mainAudio.addEventListener("timeupdate", (e)=>{
+  const currentTime = e.target.currentTime; //currentTime
+  const duration = e.target.duration; //totalTime
+  let progressWidth = (currentTime / duration) * 100;
+  progressBar.style.width = `${progressWidth}%`;
+
+  let musicCurrentTime = wrapper.querySelector(".current-time"),
+  musicDuartion = wrapper.querySelector(".max-duration");
+  mainAudio.addEventListener("loadeddata", ()=>{
+    // update total duration
+    let mainAdDuration = mainAudio.duration;
+    let totalMin = Math.floor(mainAdDuration / 60);
+    let totalSec = Math.floor(mainAdDuration % 60);
+    if(totalSec < 10){ //if sec is less than 10 then add 0 before it
+      totalSec = `0${totalSec}`;
+    }
+    musicDuartion.innerText = `${totalMin}:${totalSec}`;
+  });
+  // update playing song current time
+  let currentMin = Math.floor(currentTime / 60);
+  let currentSec = Math.floor(currentTime % 60);
+  if(currentSec < 10){ //if sec is less than 10 then add 0 before it
+    currentSec = `0${currentSec}`;
+  }
+  musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
 });
