@@ -44,7 +44,7 @@ body{
   cursor: pointer;
 }
 
-.top-bar{
+.top-bar, .progress-area .song-timer{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -134,4 +134,13 @@ body{
 .progress-area:hover .progress-bar::before{
   opacity: 1;
   pointer-events: auto;
+}
+
+.progress-area .song-timer{
+  margin-top: 2px;
+}
+
+.song-timer span{
+  font-size: 13px;
+  color: var(--lightblack);
 }
