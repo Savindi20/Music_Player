@@ -220,6 +220,12 @@ body{
   transition: all 0.15s ease-out;
 }
 
+.music-list.show{
+  bottom: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .header .row{
   display: flex;
   align-items: center;
@@ -246,6 +252,10 @@ body{
   overflow: auto;
 }
 
+.music-list ul::-webkit-scrollbar{
+  width: 0px;
+}
+
 .music-list ul li{
   list-style: none;
   display: flex;
@@ -270,4 +280,9 @@ body{
 
 ul li .audio-duration{
   font-size: 16px;
+}
+
+ul li.playing{
+  pointer-events: none;
+  color: var(--violet);
 }
