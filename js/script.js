@@ -117,3 +117,23 @@ progressArea.addEventListener("click", (e)=>{
   playMusic(); //calling playMusic function
   playingSong();
 });
+
+//change loop, shuffle, repeat icon onclick
+const repeatBtn = wrapper.querySelector("#repeat-plist");
+repeatBtn.addEventListener("click", ()=>{
+  let getText = repeatBtn.innerText; //getting this tag innerText
+  switch(getText){
+    case "repeat":
+      repeatBtn.innerText = "repeat_one";
+      repeatBtn.setAttribute("title", "Song looped");
+      break;
+    case "repeat_one":
+      repeatBtn.innerText = "shuffle";
+      repeatBtn.setAttribute("title", "Playback shuffled");
+      break;
+    case "shuffle":
+      repeatBtn.innerText = "repeat";
+      repeatBtn.setAttribute("title", "Playlist looped");
+      break;
+  }
+});
