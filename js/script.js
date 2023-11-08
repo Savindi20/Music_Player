@@ -106,3 +106,14 @@ mainAudio.addEventListener("timeupdate", (e)=>{
   }
   musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
 });
+
+// update playing song currentTime on according to the progress bar width
+progressArea.addEventListener("click", (e)=>{
+  let progressWidth = progressArea.clientWidth; //getting width of progress bar
+  let clickedOffsetX = e.offsetX; //getting offset x value
+  let songDuration = mainAudio.duration; //getting song total duration
+  
+  mainAudio.currentTime = (clickedOffsetX / progressWidth) * songDuration;
+  playMusic(); //calling playMusic function
+  playingSong();
+});
