@@ -137,3 +137,17 @@ repeatBtn.addEventListener("click", ()=>{
       break;
   }
 });
+
+//code for after song ended
+mainAudio.addEventListener("ended", ()=>{
+  // we'll do according to the icon means if user has set icon to
+  // loop song then we'll repeat the current song and will do accordingly
+  let getText = repeatBtn.innerText; //getting this tag innerText
+  switch(getText){
+    case "repeat":
+      nextMusic(); //calling nextMusic function
+      break;
+    case "repeat_one":
+    case "shuffle":
+  }
+});
